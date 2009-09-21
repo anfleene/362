@@ -1,18 +1,16 @@
 #include "plane.h"
 #include "package_creator.h"
-#include "utility.h"
+#include "event_list.h"
+#include "event.h"
 
 using namespace std;
 
 int main ()
 {
-	package pkg;
-	plane *p = new plane(1);
-	package_creator pc = package_creator();
-	for(int i=0; i < 25; i++)
-	{
-		pkg = pc.next_pkg();
-		p->loadPkg(pkg);
-	}  
+	srand ( std::time(NULL) );
+	event_list el = event_list();
+	el.print();
+	// event e = event(3, 24, 1);
+	// e.print();
 	return 0;
 }

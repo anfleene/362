@@ -23,6 +23,7 @@
 #include <string>
 #include <vector>
 #include <stack>
+#include <list>
 
 using namespace std;
 

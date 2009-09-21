@@ -1,23 +1,12 @@
 #include "plane.h"
 
-plane::plane()
-{
-	destination = package::UNKNOWN;
-}
 plane::plane(int dest)
 {
 	setDestination(dest);
 }
 void plane::setDestination(int dest)
 {
-	if((dest == package::MEM ) || (dest == package::CHI))
-		{
-		this->destination = dest; 
-	} 
-	else
-		{
-			this->destination = package::UNKNOWN;
-		}
+	this->destination = dest; 
 }
 
 void plane::loadPkg(package &pkg)
