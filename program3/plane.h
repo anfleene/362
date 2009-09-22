@@ -16,8 +16,9 @@ public:
 	plane(int dest);
 	void setDestination(int dest);
 	void loadPkg(package&);
-	bool isPlaneFull();
+	bool isNotFull();
 	int getDestination() const{ return destination; };
+	void print();
 private:
 	int destination;
 	stack<package> cargo;

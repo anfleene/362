@@ -13,6 +13,7 @@ public:
 	static const int MEM = 2;
 	static const int UNDEFINED = 0;
 	event(int, int, int);
+	static string destination_string(int);
 	static event pkg(int time_a);
 	static event plane(int time_a, int dest);
 	static event eos(int time_a);

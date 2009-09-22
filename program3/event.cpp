@@ -30,14 +30,14 @@ bool event::operator<(event &e)
   return (this->getTime() < e.getTime());
 }
 
-string event::destination_string()
+string event::destination_string(int dest)
 {
 	string s;
-	if (this->destination == event::CHI)
+	if (dest == event::CHI)
 	{
 		s = "Chicago";
 	}
-	else if(this->destination == event::MEM)
+	else if(dest == event::MEM)
 	{
 		s = "Memphis";
 	}
@@ -46,6 +46,11 @@ string event::destination_string()
 		s = "Undefined";
 	}
 	return s;
+}
+
+string event::destination_string()
+{
+	return event::destination_string(this->destination);
 }
 
 string event::type_string()
@@ -68,7 +73,9 @@ string event::type_string()
 
 void event::print()
 {
+	cout << "<event>" << endl;
 	cout << "Type: " << this->type_string() << endl;
-	cout << "Destination: " << this->destination << "-"<< this->destination_string() << endl;
+	cout << "Destination: " << this->destination_string() << endl;
 	cout << "Time: " << this->getTime() << endl;
+	cout << "</event>" << endl << endl;
 }

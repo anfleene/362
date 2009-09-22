@@ -14,8 +14,17 @@ void plane::loadPkg(package &pkg)
 	this->cargo.push(pkg);
 }
 
-bool plane::isPlaneFull()
+bool plane::isNotFull()
 {
-	bool planeFull =  (this->cargo.size() == 25) ? true : false;
-	return planeFull;
+	bool planeNotFull =  (this->cargo.size() == 25) ? false : true;
+	return planeNotFull;
+}
+
+void plane::print()
+{
+	cout << "<plane>" << endl;
+	cout << "Destination: " << event::destination_string(this->destination) << endl;
+	cout << "# of Packages: " << this->cargo.size() << endl;
+	cout << "</plane>" << endl << endl;
+	
 }

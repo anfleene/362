@@ -16,15 +16,21 @@ public:
 	static const int END = 2000;
 	event_list();
 	void insert_event(event);
+	event front(){return this->todo.front();};
+	event pop_front();
+	bool empty(){return this->todo.empty();};
 	void print();
+	list<event> get_list(){return this->todo;};
 	
 private:
-	
+ 	void print(list<event>);
 	void build_list();
 	void build_pkg_list();
 	void build_chi_plane_list();
 	void build_mem_plane_list();
-	list<event> e_list;
+	void print(list<event>*);
+	list<event> todo;
+	list<event> finished;
 };
 
 #endif

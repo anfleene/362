@@ -2,6 +2,7 @@
 #define PACKAGE_H
 
 #include "utility.h"
+#include "event.h"
 
 class package
 {
@@ -14,6 +15,7 @@ public:
 	package(int dest);
 	void setDestination(int dest);
 	int getDestination() { return this->destination; };
+	void print();
 private:
 	int destination;
 	

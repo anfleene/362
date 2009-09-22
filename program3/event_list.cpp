@@ -25,7 +25,7 @@ void event_list::build_pkg_list()
 		pkg_list.push_back(event::pkg(i));
 	}
 	
-	this->e_list.merge(pkg_list);
+	this->todo.merge(pkg_list);
 }
 
 void event_list::build_chi_plane_list()
@@ -37,7 +37,7 @@ void event_list::build_chi_plane_list()
 	{
 		p_list.push_back(event::plane(i, event::CHI));
 	}
-	this->e_list.merge(p_list);
+	this->todo.merge(p_list);
 }
 
 void event_list::build_mem_plane_list()
@@ -49,26 +49,48 @@ void event_list::build_mem_plane_list()
 	{
 		p_list.push_back(event::plane(i, event::MEM));
 	}
-	this->e_list.merge(p_list);
+	this->todo.merge(p_list);
 }
 
 void event_list::insert_event(event e)
 {
-	list<event> elist;
-	elist.push_back(e);
-	this->e_list.merge(elist);
+	if(e.getTime() < event_list::END)
+	{
+		list<event> elist;
+		elist.push_back(e);
+		this->todo.merge(elist);
+	}
+}
+
+event event_list::pop_front()
+{
+	event e = this->todo.front(); 
+	this->todo.pop_front(); 
+	this->finished.push_back(e);
+	return e;
 }
 
 void event_list::print()
 {
+	cout << "*********************************************************" << endl;
+	cout << "******************Events Left to Finish******************" << endl;
+	cout << "*********************************************************" << endl;
+	print(this->todo);
+	cout << "*********************************************************" << endl;
+	cout << "*********************Finished Events*********************" << endl;
+	cout << "*********************************************************" << endl;
+	print(this->finished);
+}
+
+void event_list::print(list<event> el)
+{
 	int i=0;
 	list<event>::iterator it;
-	for (it=this->e_list.begin(); it!=this->e_list.end(); ++it)
+	for (it=el.begin(); it!=el.end(); ++it)
 	{
 		++i;
 		event e = *it;
-		cout << "------------------event: " << i << "------------------" << endl;
+		cout << "Event #: " << i << endl;
 		e.print();
-		cout << "------------------/event: " << i << "------------------" << endl;
 	}
 }
