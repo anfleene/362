@@ -1,3 +1,12 @@
+/*
+*Name: Andrew Fleener
+*Date: 9/22/09
+*Description: event is an object that contains a destination, event type, and a time for the event to happen
+* The event class also contains some static functions and constants
+* The functions create different types of events based on their names for example event::pkg creates a package event at a given time
+* with a random destination assigned to it. the constants are integers that either portray a type of event or a destination
+* I have also overloaded the < operator so that events can be compared based on time
+*/
 #ifndef EVENT_H
 #define EVENT_H
 

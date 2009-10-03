@@ -1,3 +1,10 @@
+/*
+*Name: Andrew Fleener
+*Date: 9/22/09
+*Description: The event list object is basically a wrapper class for list<event> however it containts several functions designed for
+*building the initial event list, it uses a few static constants that describe the paramters requred to build the event list
+* this class contains several methods such as push and pop_front that are modified to behave the way i would like
+*/
 #ifndef EVENT_LIST_H
 #define EVENT_LIST_H
 
@@ -15,10 +22,10 @@ public:
 	static const int FIRST_END_OF_SERVICE = 8;
 	static const int END = 2000;
 	event_list();
-	void insert_event(event);
+	void push(event);
 	event front(){return this->todo.front();};
 	event pop_front();
-	bool empty(){return this->todo.empty();};
+	bool empty(){return this->todo.size() <= 0;};
 	void print();
 	list<event> get_list(){return this->todo;};
 	
