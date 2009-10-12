@@ -19,7 +19,7 @@ using namespace std;
 class filer
 {
 public:
-	void makefile(int n, int range, bool truly_random, string file_name);
+	void makefile(int n, int range, bool truly_random, bool odd, string file_name);
 	//precondition: n, range, truly_random, and file_name have 
 	//been set; truly_random is type bool, and determines whether 
 	//the numbers are truly random, or pseudorandom
@@ -38,9 +38,11 @@ public:
 
 	bool trulyRandomNumbers();
 	//this will ask the user for if they want truly random numbers
+	
+	bool oddOrEven();
 
 private:
-	int next_number(int range);
+	int next_number(int range, int odd);
 	//precondition:  range has been set to a nonnegative value
 	//postcondition:  returns a random integer in the range
 	//0-range, inclusive
