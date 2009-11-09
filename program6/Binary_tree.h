@@ -6,7 +6,7 @@
 */
 
 
-#include "Binary_node.h"
+#include "AVL_node.h"
 
 #ifndef BINARY_TREE_H
 #define BINARY_TREE_H
@@ -28,6 +28,8 @@ public:
    void inorder(void (*visit)(Entry &));
    //Post: The tree has been traversed in inorder sequence.
    //Uses: The function recursive_inorder
+
+   vector<Entry>* inorder();
 
    void postorder(void (*visit)(Entry &));
    //Post: The tree has been traversed in postorder sequence.
@@ -66,10 +68,10 @@ public:
 
    Binary_tree & operator =(const Binary_tree<Entry> &original);
    // overloaded assignment operator
-   //Post: The calling tree is reset as a deep copy of tree pointed to by original
-   //Uses:  The function recursive_copy
+   // Post: The calling tree is reset as a deep copy of tree pointed to by original
+   // Uses:  The function recursive_copy
 
-   ~Binary_tree();   //destructor
+   virtual ~Binary_tree();   //destructor
    //Single member variable 
 protected:
 
@@ -78,6 +80,8 @@ protected:
 
 
    void recursive_inorder(Binary_node<Entry> *sub_root,	void (*visit)(Entry &));
+
+   void recursive_inorder(Binary_node<Entry> *sub_root,	vector<Entry>*);
 
    void recursive_postorder(Binary_node<Entry> *sub_root, void (*visit)(Entry &));
 
@@ -159,13 +163,31 @@ void Binary_tree<Entry>::inorder(void (*visit)(Entry &)){
 	recursive_inorder(this->root, visit);	
 }
 
+//preforms visit in order on the tree
+template <class Entry>
+vector<Entry>* Binary_tree<Entry>::inorder(){
+	vector<Entry> *vec;
+	recursive_inorder(this->root, vec);	
+	return vec;
+}
+
 //preforms a recursive inorder traversal with visit
 template <class Entry>
 void Binary_tree<Entry>::recursive_inorder(Binary_node<Entry> *sub_root, void (*visit)(Entry &)){
 	if(sub_root != NULL){
-		recursive_preorder(sub_root->left, visit);		
+		recursive_inorder(sub_root->left, visit);		
 		visit(sub_root->data);
-		recursive_preorder(sub_root->right, visit);
+		recursive_inorder(sub_root->right, visit);
+	}
+}
+
+//preforms a recursive inorder traversal with visit
+template <class Entry>
+void Binary_tree<Entry>::recursive_inorder(Binary_node<Entry> *sub_root, vector<Entry> *vec){
+	if(sub_root != NULL){
+		recursive_inorder(sub_root->left, vec);		
+		vec->push_back(sub_root->data);
+		recursive_inorder(sub_root->right, vec);
 	}
 }
 
@@ -179,8 +201,8 @@ void Binary_tree<Entry>::postorder(void (*visit)(Entry &)){
 template <class Entry>
 void Binary_tree<Entry>::recursive_postorder(Binary_node<Entry> *sub_root, void (*visit)(Entry &)){
 	if(sub_root != NULL){
-		recursive_preorder(sub_root->left, visit);		
-		recursive_preorder(sub_root->right, visit);
+		recursive_postorder(sub_root->left, visit);		
+		recursive_postorder(sub_root->right, visit);
 		visit(sub_root->data);		
 	}
 }
@@ -316,5 +338,5 @@ Binary_tree<Entry>& Binary_tree<Entry>::operator =(const Binary_tree<Entry> &ori
 //destructor calls clear to delete every node in the tree
 template <class Entry>
 Binary_tree<Entry>::~Binary_tree(){
-	this->clear();
+	// this->clear();
 }
