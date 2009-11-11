@@ -8,9 +8,8 @@ int main ()
 	int n = test->howManyNumbers();
 	int range = test->whatsTheRange();
 	string filename = test->askForFileName();
-	bool odd = test->oddOrEven();
 	bool truly_random = test->trulyRandomNumbers();
 	//make the file
-	test->makefile(n, range, truly_random, odd, filename);
+	test->makefile(n, range, truly_random, filename);
 	 return 0;
 }

@@ -12,7 +12,7 @@
 #include "utility.h"
 #include "filer.h"
 
-void filer::makefile(int n, int range, bool truly_random, bool odd,string file_name)
+void filer::makefile(int n, int range, bool truly_random, string file_name)
 {
 	//set truly random
 	if(truly_random)
@@ -27,7 +27,7 @@ void filer::makefile(int n, int range, bool truly_random, bool odd,string file_n
 	//loop next_number n number of times
 	for(int i=1; i <= n; i++)
 	{
-		myfile << next_number(abs(range), odd);
+		myfile << next_number(abs(range));
 		if(i != n)
 		{
 			myfile << endl;
@@ -38,16 +38,10 @@ void filer::makefile(int n, int range, bool truly_random, bool odd,string file_n
 	myfile.close();
 }
 
-int filer::next_number(int range, int odd)
+int filer::next_number(int range)
 {
 	//returns a random number between 0 and the range
-	int ran;
-	if(odd){
-		ran = 2 * rand() + 1;
-	}else{
-		ran = 2 * rand();
-	}
-	int num = ran % range;
+	int num = rand() % range;
 	return abs(num);
 }
 
@@ -96,22 +90,4 @@ bool filer::trulyRandomNumbers()
 		random = false;
 	}
 	return random;
-}
-
-bool filer::oddOrEven()
-{
-	//ask if you want odd or even numbers and returns true or false
-	bool odd;
-	string oddEven;
-	cout << "Do you want odd or even numbers?(o/e) "<< endl;
-	cin >> oddEven;
-	if(oddEven == "O" || oddEven == "o")
-	{
-		odd = true;
-	}
-	else
-	{
-		odd = false;
-	}
-	return odd;
 }
