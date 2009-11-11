@@ -29,46 +29,58 @@ private:
 };
 #endif //KEY_H
 
+//constructor
 template <class T>
 Key<T>::Key(T k){
 	this->key = k;
 }
+
 //getter for the integer contained in Key
 template <class T>
 T Key<T>::the_key() const{
 	return this->key;
 }
 
-
+//initialize comparisons to 0
 template <class T>
 double Key<T>::comparisons = 0;
 
+//over load of the == operator
 template <class T>
 bool operator == (const Key<T> &x, const Key<T> &y){
 	Key<T>::comparisons++;
 	return (x.the_key() == y.the_key());
 }
 
+//over load of the > operator
 template <class T>
 bool operator > (const Key<T> &x, const Key<T> &y){
 	Key<T>::comparisons++;	
 	return (x.the_key() > y.the_key());	
 }
+
+//over load of the < operator
 template <class T>
 bool operator < (const Key<T> &x, const Key<T> &y){
 	Key<T>::comparisons++;
 	return (x.the_key() < y.the_key());
 }
+
+//over load of the >= operator
 template <class T>
 bool operator >= (const Key<T> &x, const Key<T> &y){
 	Key<T>::comparisons++;
 	return (x.the_key() >= y.the_key());
 }
+
+//over load of the <= operator
 template <class T>
 bool operator <= (const Key<T> &x, const Key<T> &y){
 	Key<T>::comparisons++;
 	return (x.the_key() <= y.the_key());
 }
+
+//over load of the != operator
 template <class T>
 bool operator != (const Key<T> &x, const Key<T> &y){
 	Key<T>::comparisons++;
