@@ -70,7 +70,7 @@ vector<double> comparisons(vector<Key<int> > &vec){
 	comps.resize(3);
 	comps.at(0) = (bst_comps/num_comps);
 	comps.at(1) = (avl_comps/num_comps);
-	comps.at(2) = (comps.at(1)/ comps.at(0));
+	comps.at(2) = (comps.at(0)/ comps.at(1)) * 100;
 	return comps;
 }
 
@@ -92,9 +92,9 @@ int main ()
 	cout.precision(3);
 	cout << "               " << "Average search compares" << setw(25) << "Average search compares" << setw(20) << "Col. 1 as %" << endl;
 	cout << setw(30) << "average tree" << setw(25) << "AVL tree" << setw(27) << "of col. 2" << endl;		
-	cout << "Trial 1" << setw(20) << comp_a.at(0) << setw(27) << comp_a.at(1) << setw(26) << comp_a.at(2) << endl;		
-	cout << "Trial 2" << setw(20) << comp_b.at(0) << setw(27) << comp_b.at(1) << setw(26) << comp_b.at(2) << endl;		
-	cout << "Trial 3" << setw(20) << comp_c.at(0) << setw(27) << comp_c.at(1) << setw(26) << comp_c.at(2) << endl;			
+	cout << "Trial 1" << setw(20) << comp_a.at(0) << setw(27) << comp_a.at(1) << setw(26) << comp_a.at(2) << "%" << endl;		
+	cout << "Trial 2" << setw(20) << comp_b.at(0) << setw(27) << comp_b.at(1) << setw(26) << comp_b.at(2) << "%" << endl;		
+	cout << "Trial 3" << setw(20) << comp_c.at(0) << setw(27) << comp_c.at(1) << setw(26) << comp_c.at(2) << "%" << endl;			
 
 return 0;
 }
