@@ -13,12 +13,46 @@ public:
 	//times a comparison is made against a Key object
 	static double comparisons;
 	
-	Key (int x = 0);
+	Key(){};
+	
+	Key(int x){
+		this->key = x;
+	};
 	//constructor 
 	//default is to set the integer value key to 0
 
-	int the_key() const;
+	int the_key() const{ return this->key; };
 	//accessor function - to inspect key value
+	
+	friend bool operator ==(const Key &x, const Key &y){
+		Key::comparisons++;
+		return (x.the_key() == y.the_key());
+	}
+	friend bool operator > (const Key &x, const Key &y){
+		Key::comparisons++;	
+		return (x.the_key() > y.the_key());	
+	}
+	friend bool operator < (const Key &x, const Key &y){
+		Key::comparisons++;
+		return (x.the_key() < y.the_key());
+	}
+	friend bool operator >=(const Key &x, const Key &y){
+		Key::comparisons++;
+		return (x.the_key() >= y.the_key());
+	}
+	friend bool operator <=(const Key &x, const Key &y){
+		Key::comparisons++;
+		return (x.the_key() <= y.the_key());
+	}
+	friend bool operator !=(const Key &x, const Key &y){
+		Key::comparisons++;
+		return (x.the_key() != y.the_key());
+	}
+	//overload of the write operator to print a key
+	friend ostream& operator <<(ostream &stream, const Key &k){
+		stream << k.the_key();
+		return stream;
+	}
 
 private:
 	int key;
@@ -26,14 +60,5 @@ private:
 #endif //KEY_H
 //overload relational operators for type Key
 //each also increments the comparisons counter variable
-bool operator ==(const Key &x, const Key &y);
-bool operator > (const Key &x, const Key &y);
-bool operator < (const Key &x, const Key &y);
-bool operator >=(const Key &x, const Key &y);
-bool operator <=(const Key &x, const Key &y);
-bool operator !=(const Key &x, const Key &y);
-ostream& operator <<(ostream &stream, const Key &k);
 
-
-
-
+double Key::comparisons = 0;
