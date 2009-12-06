@@ -40,7 +40,7 @@ public:
 	//this will ask the user for if they want truly random numbers
 
 private:
-	int next_number(int range);
+	short next_number(int range);
 	//precondition:  range has been set to a nonnegative value
 	//postcondition:  returns a random integer in the range
 	//0-range, inclusive

@@ -38,10 +38,10 @@ void filer::makefile(int n, int range, bool truly_random, string file_name)
 	myfile.close();
 }
 
-int filer::next_number(int range)
+short filer::next_number(int range)
 {
 	//returns a random number between 0 and the range
-	int num = rand() % range;
+	short num = rand() % range;
 	return abs(num);
 }
 
