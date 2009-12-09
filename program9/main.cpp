@@ -72,8 +72,10 @@ bool sortCheck(Matrix *mat){
 	}
 	//if i-1 is greater than i the list is not sorted
 	for(int i=1; i < all_values.size(); i++){
-		if(all_values.at(i-1) > all_values.at(i))
+		if(all_values.at(i-1) > all_values.at(i)){
+			cout << all_values.at(i-1) << " > " << all_values.at(i) << endl;
 			sorted = false;
+		}
 	}
 	return sorted;
 }

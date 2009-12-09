@@ -96,13 +96,13 @@ public:
 	~ColumnSorter();
 	//sort the matrix
 	void sort();
+	//the matrix in this class
+	Matrix* mat;
 private:
 	//sort each column individually
 	void sortAllColumns();
 	//sort a column at the passed position
 	void sortColumn(int);
-	//the matrix in this class
-	Matrix* mat;
 	//a quicksort for this sorter
 	void quickSort(vector<short>&);
 	//this does the recursion of the quicksort

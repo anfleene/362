@@ -87,7 +87,7 @@ void ColumnSorter::transRowToCol(){
 	vector<short> col;
 	//loop through and load the columns
 	for(int i=0; i < this->mat->column_size; i++){
- 		col = this->mat-> (i);
+ 		col = this->mat->loadColumn(i);
 		//loop through the values in the column
 		for(col_it=col.begin(); col_it < col.end(); col_it++){
 			//update the value in the column
