@@ -57,8 +57,6 @@ int main(){
 	quickSort(vec);
 	double elapsed = a_timer.elapsed_time();
 	vector<short>::iterator it;	
-	for(it=vec->begin(); it < vec->end(); it++)
-		cout << *it << endl;
 	cout << "Elapsed Time: " << elapsed << endl;
 return 0;
 }
